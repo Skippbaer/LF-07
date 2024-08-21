@@ -54,45 +54,45 @@ To install paho-mqtt
 
 ##Subscriber: 
 
-### Define the MQTT broker details 
+Define the MQTT broker details 
 
 broker = "172.20.167.40" 
 port = 1896 
 topic = "T" 
 
-### Define the username and password 
+Define the username and password 
 
 username = "<user>" 
 password = "<password>" 
 
-### Define the callback function for when a message is received 
+Define the callback function for when a message is received 
 
 def on_message(client, userdata, msg): 
     print(f"Received message: {msg.payload.decode()} on topic {msg.topic}") 
 
-### Create a subscriber client instance 
+Create a subscriber client instance 
 
 client = mqtt.Client() 
 
-### Set username and password 
+Set username and password 
 
 client.username_pw_set(username, password) 
 
-### Assign the on_message callback function 
+Assign the on_message callback function 
 
 client.on_message = on_message 
 
-### Connect to the broker 
+Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-### Subscribe to the topic 
+Subscribe to the topic 
 
 client.subscribe(topic) 
 
-### Start the loop to process received messages 
+Start the loop to process received messages 
 
 try: 
     client.loop_forever() 
@@ -108,35 +108,35 @@ finally:
 import paho.mqtt.client as mqtt 
 import time   
 
-### Define the MQTT broker details 
+Define the MQTT broker details 
 
 broker = "172.20.167.40" 
 port = 1896 
 topic = "T" 
 
-### Define the username and password 
+Define the username and password 
 
 username = "<user>" 
 password = "<password>" 
 
-### Create a publisher client instance 
+Create a publisher client instance 
 
 client = mqtt.Client() 
 
 
-### Set username and password 
+Set username and password 
 
 client.username_pw_set(username, password) 
 
   
 
-### Connect to the broker 
+Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-### Publish messages in a loop with a delay 
+Publish messages in a loop with a delay 
 
 try: 
     while True: 
