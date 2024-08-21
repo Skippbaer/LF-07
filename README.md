@@ -32,10 +32,10 @@ Installation & Data transfer as Client:
 
 
 Login as Subscriber: 
-mosquitto_sub -h <ip> -p 1896 -t “topic name” -u <User> -P <Password> 
+mosquitto_sub -h <ip> -p 1896 -t "<topic name>" -u <User> -P <Password> 
 
 Login as Publisher: 
-mosquitto_pub -h <ip> -p 1896 -t “topic name” -m <Message> -u <User> -P <Password> 
+mosquitto_pub -h <ip> -p 1896 -t "<topic name>" -m <Message> -u <User> -P <Password> 
 
 
 MQTT und Python: 
