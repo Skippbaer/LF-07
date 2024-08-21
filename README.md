@@ -52,7 +52,7 @@ To install paho-mqtt
 
  
 ```
-##Subscriber: 
+#Subscriber: 
 
 #Define the MQTT broker details 
 
@@ -70,29 +70,29 @@ password = "<password>"
 def on_message(client, userdata, msg): 
     print(f"Received message: {msg.payload.decode()} on topic {msg.topic}") 
 
-Create a subscriber client instance 
+#Create a subscriber client instance 
 
 client = mqtt.Client() 
 
-Set username and password 
+#Set username and password 
 
 client.username_pw_set(username, password) 
 
-Assign the on_message callback function 
+#Assign the on_message callback function 
 
 client.on_message = on_message 
 
-Connect to the broker 
+#Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-Subscribe to the topic 
+#Subscribe to the topic 
 
 client.subscribe(topic) 
 
-Start the loop to process received messages 
+#Start the loop to process received messages 
 
 try: 
     client.loop_forever() 
@@ -101,9 +101,10 @@ except KeyboardInterrupt:
 finally: 
     # Disconnect the client if loop_forever is interrupted 
     client.disconnect() 
+```
 
-    
-##Publisher:  
+```
+#Publisher:  
 
 import paho.mqtt.client as mqtt 
 import time   
@@ -119,24 +120,24 @@ topic = "T"
 username = "<user>" 
 password = "<password>" 
 
-Create a publisher client instance 
+#Create a publisher client instance 
 
 client = mqtt.Client() 
 
 
-Set username and password 
+#Set username and password 
 
 client.username_pw_set(username, password) 
 
   
 
-Connect to the broker 
+#Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-Publish messages in a loop with a delay 
+#Publish messages in a loop with a delay 
 
 try: 
     while True: 
@@ -146,10 +147,7 @@ try:
         time.sleep(5)  # Wait for 5 seconds before sending the next message 
 except KeyboardInterrupt: 
     print("Publisher stopped.") 
-
 finally: 
-
     # Disconnect the client 
-
     client.disconnect() 
 ```
