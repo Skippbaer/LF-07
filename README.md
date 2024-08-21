@@ -52,8 +52,9 @@ To install paho-mqtt
 ```
  
 ```
-#Subscriber: 
+#Subscriber:
 
+import paho.mqtt.client as mqtt 
 #Define the MQTT broker details 
 
 broker = "172.20.167.40" 
