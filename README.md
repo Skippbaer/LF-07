@@ -51,21 +51,21 @@ To install paho-mqtt
 4. to get out of the Virtual Environment: deactivate 
 
  
-
+```
 ##Subscriber: 
 
-Define the MQTT broker details 
+#Define the MQTT broker details 
 
 broker = "172.20.167.40" 
 port = 1896 
 topic = "T" 
 
-Define the username and password 
+#Define the username and password 
 
 username = "<user>" 
 password = "<password>" 
 
-Define the callback function for when a message is received 
+#Define the callback function for when a message is received 
 
 def on_message(client, userdata, msg): 
     print(f"Received message: {msg.payload.decode()} on topic {msg.topic}") 
@@ -108,13 +108,13 @@ finally:
 import paho.mqtt.client as mqtt 
 import time   
 
-Define the MQTT broker details 
+#Define the MQTT broker details 
 
 broker = "172.20.167.40" 
 port = 1896 
 topic = "T" 
 
-Define the username and password 
+#Define the username and password 
 
 username = "<user>" 
 password = "<password>" 
@@ -152,3 +152,4 @@ finally:
     # Disconnect the client 
 
     client.disconnect() 
+```
