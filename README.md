@@ -5,8 +5,8 @@
 WORKSHOP 
 
 Installation Broker: 
-sudo apt install mosquitto 
- 
+sudo apt install mosquitto
+sudo apt install mosquitto-clients 
 
 Creating a Config for  mosquitto: 
 cd /etc/mosquitto/conf.d 
@@ -30,8 +30,6 @@ sudo systemctl restart mosquitto.service
 
 Installation & Data transfer as Client: 
 
-sudo apt install mosquitto-clients 
-
 
 Login as Subscriber: 
 mosquitto_sub -h <ip> -p 1896 -t “topic name” -u <User> -P <Password> 
@@ -54,146 +52,99 @@ To install paho-mqtt
 
  
 
-Subscriber: 
+##Subscriber: 
 
-  GNU nano 7.2                                                             mqtt_sub.py 
-
-# Define the MQTT broker details 
+### Define the MQTT broker details 
 
 broker = "172.20.167.40" 
-
 port = 1896 
-
 topic = "T" 
 
-  
+### Define the username and password 
 
-# Define the username and password 
+username = "<user>" 
+password = "<password>" 
 
-username = "leif" 
-
-password = "1234" 
-
-  
-
-# Define the callback function for when a message is received 
+### Define the callback function for when a message is received 
 
 def on_message(client, userdata, msg): 
-
     print(f"Received message: {msg.payload.decode()} on topic {msg.topic}") 
 
-  
-
-# Create a subscriber client instance 
+### Create a subscriber client instance 
 
 client = mqtt.Client() 
 
-  
-
-# Set username and password 
+### Set username and password 
 
 client.username_pw_set(username, password) 
 
-  
-
-# Assign the on_message callback function 
+### Assign the on_message callback function 
 
 client.on_message = on_message 
 
-  
-
-# Connect to the broker 
+### Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-# Subscribe to the topic 
+### Subscribe to the topic 
 
 client.subscribe(topic) 
 
-  
-
-# Start the loop to process received messages 
+### Start the loop to process received messages 
 
 try: 
-
     client.loop_forever() 
-
 except KeyboardInterrupt: 
-
     print("Subscriber stopped.") 
-
 finally: 
-
     # Disconnect the client if loop_forever is interrupted 
-
     client.disconnect() 
 
- 
-
- 
-
-Publisher:  
+    
+##Publisher:  
 
 import paho.mqtt.client as mqtt 
+import time   
 
-import time 
-
-  
-
-# Define the MQTT broker details 
+### Define the MQTT broker details 
 
 broker = "172.20.167.40" 
-
 port = 1896 
-
 topic = "T" 
 
-  
+### Define the username and password 
 
-# Define the username and password 
+username = "<user>" 
+password = "<password>" 
 
-username = "leif" 
-
-password = "1234" 
-
-  
-
-# Create a publisher client instance 
+### Create a publisher client instance 
 
 client = mqtt.Client() 
 
-  
 
-# Set username and password 
+### Set username and password 
 
 client.username_pw_set(username, password) 
 
   
 
-# Connect to the broker 
+### Connect to the broker 
 
 client.connect(broker, port, 60) 
 
   
 
-# Publish messages in a loop with a delay 
+### Publish messages in a loop with a delay 
 
 try: 
-
     while True: 
-
         message = "Hello, MQTT with authentication!" 
-
         client.publish(topic, message) 
-
         print(f"Published message: {message}") 
-
         time.sleep(5)  # Wait for 5 seconds before sending the next message 
-
 except KeyboardInterrupt: 
-
     print("Publisher stopped.") 
 
 finally: 
