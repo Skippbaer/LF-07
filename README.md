@@ -1,7 +1,7 @@
 # LF-07
 
 
-```bash
+```
 WORKSHOP 
 
 Installation Broker: 
