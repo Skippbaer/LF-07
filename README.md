@@ -51,7 +51,7 @@ To install paho-mqtt
 4. to get out of the Virtual Environment: deactivate 
 ```
  
-```
+```python
 #Subscriber:
 
 import paho.mqtt.client as mqtt 
@@ -104,7 +104,7 @@ finally:
     client.disconnect() 
 ```
 
-```
+```python
 #Publisher:  
 
 import paho.mqtt.client as mqtt 
